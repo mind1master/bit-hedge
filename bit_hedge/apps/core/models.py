@@ -19,4 +19,7 @@ class Contract(models.Model):
     premium_received = models.DateTimeField(null=True, blank=True)
     money_received = models.DateTimeField(null=True, blank=True)
     money_sent = models.DateTimeField(null=True, blank=True)
-    recipient_account = models.CharField(max_length=500)
+    recipient_account = models.CharField(max_length=500, null=True, blank=True)
+
+    def __unicode__(self):
+        return unicode(self.owner) + '\'s contract at ' + unicode(self.creation_date)

@@ -16,6 +16,6 @@ INSTALLED_APPS += [
     'helpers42cc',
     'sorl.thumbnail',
     'debug_toolbar',
-    #'south',
+    'south',
     'django_coverage',
     ]
