@@ -41,16 +41,6 @@
 <body><div class="container-fluid">
 
 {% block header_wrapper %}
-  <div class="row-fluid"><div class="offset2 span8"><header>
-    {% block header_content %}
-    <nav>
-          <ul class="nav nav-pills">
-            <li class="{% block home_active %}{% endblock %}"><a href="{% url "home_page" %}">{% trans "Home" %}</a></li>
-            <li class="{% block stub_active %}{% endblock %}"><a href="#">{% trans "Stub" %}</a></li>
-          </ul>
-    </nav>
-    {% endblock header_content %}
-  </header></div></div>
 {% endblock header_wrapper %}
 
 {% block content_wrapper %}
