@@ -48,6 +48,14 @@
 h1 {
 	text-align:center;
 }
+
+#dp .dropdown-toggle {
+margin-left: -30px;
+z-index: 9;
+position: relative;
+margin-top: 2px;
+margin-right: 2px;
+}
 </style>
 
 <script>
@@ -95,16 +103,23 @@ $("document").ready(function(){
        Buy bitcoins at fixed price.
     </h1>
 <form class="form-horizontal well">
-        <fieldset>
           <!--legend>Controls Bootstrap supports</legend-->
           <div class="control-group info">
             <label class="control-label" for="date">Date of purache</label>
             <div class="controls">
-              <!--<input type="text" name="date" id="date">
-              <span class="help-inline">Enter future date of your purache</span>
-				-->
 				<div class="input-append date" id="dp" data-date="12-04-2013" data-date-format="dd-mm-yyyy">
-					<input class="span2" size="180" type="text" value="12-02-2014" readonly>
+					<input class="" type="text" value="12-02-2014" readonly>
+  <!--
+  <button class="btn btn-small dropdown-toggle" data-toggle="dropdown">
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <li>+1 day</li>
+    <li>+3 days</li>
+    <li>+1 week</li>
+  </ul>
+  -->
+  
 					<span class="add-on"><i class="icon-calendar"></i></span>
 			  </div>
 			  <script>
@@ -115,6 +130,7 @@ $("document").ready(function(){
 			  </script>
 			</div>
           </div>
+		  
           <div class="control-group info">
             <label class="control-label" for="amount">Amount</label>
             <div class="controls">
@@ -132,7 +148,6 @@ $("document").ready(function(){
             <button type="submit" class="btn btn-primary">Continue</button>
             <button type="reset" class="btn">Cancel</button>
           </div>
-        </fieldset>
       </form>
 
   </article></div></div>
