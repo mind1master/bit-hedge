@@ -9,26 +9,30 @@ from django.shortcuts import get_object_or_404, redirect
 
 from bit_hedge.apps.core.forms import *
 from bit_hedge.apps.core.models import *
+from bit_hedge.apps.core.utils import getRate
 
 
 @render_to('core/home.html')
 def home_view(request):
+
     form = HomeForm(request.POST or None)
+    rate = getRate()
 
     if form.is_valid():
         if request.user.is_authenticated():
             user = User.objects.get(pk=request.user.pk)
             Contract.objects.create(
                 owner=user,
-                rate=2.5,  # TODO current rate
+                rate=rate,
                 trade_amount=form.cleaned_data['amount'],
-                closing_date=form.cleaned_data['date'],
+                closing_date=form.cleaned_data['date']
             )
             return redirect(reverse('pay_fee'))
         else:
             return redirect(reverse('register'))
     return {
-        'form': form,
+        'rate': rate,
+        'form': form
     }
 
 
