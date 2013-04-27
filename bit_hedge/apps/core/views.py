@@ -16,7 +16,7 @@ from bit_hedge.apps.core.utils import getRate
 def home_view(request):
 
     form = HomeForm(request.POST or None)
-    rate = getRate()
+    rate = getRate(two_digits=True)
 
     if form.is_valid():
         if request.user.is_authenticated():
