@@ -8,33 +8,32 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404, redirect
 
 from bit_hedge.apps.core.forms import *
+from bit_hedge.apps.core.models import *
 
 
 @render_to('core/home.html')
 def home_view(request):
-    form = HomeForm()
+    form = HomeForm(request.POST or None)
+
+    if form.is_valid():
+        if request.user.is_authenticated():
+            user = User.objects.get(pk=request.user.pk)
+            Contract.objects.create(
+                owner=user,
+                rate=2.5,  # TODO current rate
+                trade_amount=form.cleaned_data['amount'],
+                closing_date=form.cleaned_data['date'],
+            )
+            return redirect(reverse('pay_fee'))
+        else:
+            return redirect(reverse('register'))
     return {
         'form': form,
     }
 
 
-@render_to('core/first_step.html')
-def first_step_view(request):
-    if request.user.is_authenticated() and not request.user.is_anonymous():
-        form = BitcoinRecipient()
-        user = request.user
-    else:
-        form = RegisterForm()
-        user = None
-    return {
-        'form': form,
-        'user': user,
-    }
-
-@render_to('core/second_step.html')
-def second_step_view(request):
-    if request.method != 'POST':
-        return redirect('home_view')
+@render_to('core/pay_fee_view.html')
+def pay_fee_view(request):
     return {}
 
 @render_to('core/register.html')

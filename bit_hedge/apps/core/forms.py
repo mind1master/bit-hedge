@@ -4,7 +4,12 @@ from django import forms
 
 
 class HomeForm(forms.Form):
-    date = forms.DateField()
+    date = forms.DateField(input_formats=[
+        '%Y-%m-%d',       # '2006-10-25'
+        '%m/%d/%Y',       # '10/25/2006'
+        '%m/%d/%y',
+        '%d.%m.%y',
+    ])
     amount = forms.DecimalField()
 
 
