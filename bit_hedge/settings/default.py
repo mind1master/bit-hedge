@@ -3,6 +3,8 @@ from utils import proj
 
 SITE_ID = 1
 
+DEBUG = True
+
 TIME_ZONE = 'America/Chicago'
 LANGUAGE_CODE = 'en-us'
 USE_TZ = True
