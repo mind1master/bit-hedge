@@ -17,7 +17,7 @@
         <div class="control-group">
             <label class="control-label" for="id_date">Future date when you need bitcoins</label>
             <div class="controls">
-                <div class="input-append date" id="dp" data-date="2013-06-10" data-date-format="yyyy-mm-dd">
+                <div class="input-append date" id="dp" data-date="{{ date }}" data-date-format="yyyy-mm-dd">
                     <input type="text" class="input-small" name="date" id="id_date" value="2013-06-10">
                     <span class="add-on"><i class="icon-calendar"></i></span>
                 </div>
@@ -33,7 +33,7 @@
             <label class="control-label" for="id_amount">Amount you will need</label>
             <div class="controls">
                 <div class="input-append">
-                    <input class="input-small" type="text" name="amount" id="id_amount" value="10">
+                    <input class="input-small" type="text" name="amount" id="id_amount" value="{{ trgAmount }}">
                     <span class="add-on">bitcoins</span>
                 </div>
             </div>
@@ -43,17 +43,13 @@
 
         <div class="control-group">
             <label class="control-label" for="premium">Fee payable now</label>
-            <div class="form-inline-text">
-                <h4>$24</h4>
-            </div>
+            <div class="controls">${{ fee }}</div>
         </div>
 
         <div class="control-group">
-            <label class="control-label">Payment due before 18:00 2013-06-10</label>
-            <span class="muted">&nbsp;&nbsp;<b>$1,350</b></span>
+            <label class="control-label">Payment due before 18:00 {{ date }}</label>
+            <div class="controls">${{ srcAmount }}</div>
         </div>
-
-
 
         <div class="form-actions">
             <button type="submit" class="btn btn-primary">Continue</button>

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from annoying.decorators import render_to
+from datetime import timedelta, datetime
 from django.contrib.auth.forms import UserCreationForm
 
 from django.contrib.auth.models import User
@@ -9,7 +10,7 @@ from django.shortcuts import get_object_or_404, redirect
 
 from bit_hedge.apps.core.forms import *
 from bit_hedge.apps.core.models import *
-from bit_hedge.apps.core.utils import getRate
+from bit_hedge.apps.core.utils import getRate, getPremium
 
 
 @render_to('core/home.html')
@@ -30,8 +31,17 @@ def home_view(request):
             return redirect(reverse('pay_fee'))
         else:
             return redirect(reverse('register'))
+    #default value
+    trgAmount = 2.78
+    srcAmount = trgAmount * rate
+    date = datetime.now()
+
     return {
+        'srcAmount': srcAmount,
+        'trgAmount': trgAmount,
         'rate': rate,
+        'date': date,
+        'fee': getPremium(rate, date, srcAmount),
         'form': form
     }
 
@@ -48,4 +58,10 @@ def register_view(request):
         return redirect(reverse('home_page'))
     return {
         'form': form,
+    }
+
+def premium(amount, rate, date) :
+    fee = getPremium(rate, date, amount)
+    return {
+        fee: fee
     }
