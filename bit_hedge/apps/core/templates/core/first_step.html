@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block home_active %}active{% endblock %}
+
+{% block content %}
+
+    {% if user %}
+        Hello, {{ user.email }}!
+    {% else %}
+        Opps, it appears that you didn't perform any transactions with us before.
+        Please create a profile or <a href="/login/">login</a>
+    {% endif %}
+    <form action="/second_step/" method="post">{% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit" />
+    </form>
+
+{% endblock content %}
