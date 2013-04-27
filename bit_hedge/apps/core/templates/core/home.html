@@ -10,15 +10,15 @@
         <small>1$ = {{ rate }}BTC</small>
     </h1>
 
-    <form class="form-horizontal well" action="http://vast-falls-2365.herokuapp.com/#" method="post">
+    <form class="well" action="#" method="post">
         <input type="hidden" name="csrfmiddlewaretoken" value="V0oS3jCmb03RcY72QUNbZZHKgXvEsWmr">
         <!--legend>Controls Bootstrap supports</legend-->
         <div class="control-group info">
-            <label class="control-label" for="date">Future date when you need bitcoins</label>
+            <label class="control-label" for="id_date">Future date when you need bitcoins</label>
             <div class="controls">
                 {{ form.date.errors }}
                 <div class="input-append date" id="dp" data-date="2013-06-10" data-date-format="yyyy-mm-dd">
-                    <input class="span2" size="180" type="text" name="date" id="id_date" value="2013-06-10" readonly="">
+                    <input class="span2" size="180" type="text" name="date" id="id_date" value="2013-06-10">
                     <span class="add-on"><i class="icon-calendar"></i></span>
                 </div>
                 <script>
@@ -30,15 +30,15 @@
             </div>
         </div>
         <div class="control-group info">
-            <label class="control-label" for="amount">Amount of bitcoins you need</label>
-            <div class="controls">
+            <label class="control-label" for="id_amount">Amount of bitcoins you need</label>
+            <div class="controls input-append">
                 {{ form.amount.errors }}
                 <input type="text" size="120" name="amount" id="id_amount" value="10">
-                <span class="help-inline">BTC</span>
+                <span class="add-on">BTC</span>
             </div>
         </div>
 
-        <br><br>
+        <hr>
 
         <div class="control-group">
             <label class="control-label">Fee payable now</label>
@@ -54,7 +54,6 @@
 
         <div class="form-actions">
             <button type="submit" class="btn btn-primary">Continue</button>
-            <button type="reset" class="btn">Cancel</button>
         </div>
     </form>
 
