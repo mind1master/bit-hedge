@@ -7,7 +7,7 @@
 {% block content %}
     <h1 class="page-header">
         Fix future bitcoin rate<br>
-        <small>$1 = {{ rate }}BTC</small>
+        <small>${{ rate }} = 1BTC</small>
     </h1>
 
     <form class="well form-horizontal" action="#" method="post">
@@ -41,8 +41,10 @@
         <hr>
 
         <div class="control-group">
-            <span class="control-label">Fee payable now</span>
-            <span class="muted">&nbsp;&nbsp;<b>$10</b></span>
+            <label class="control-label" for="premium">Fee payable now</label>
+            <div class="form-inline-text">
+                <h4>$24</h4>
+            </div>
         </div>
 
         <div class="control-group">
