@@ -9,4 +9,9 @@
     </h1>
     <i>Great, right?</i>
 
+    <form action="/first_step/" method="post">{% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit" />
+    </form>
+
 {% endblock content %}
