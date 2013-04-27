@@ -1,68 +1,62 @@
 {% extends 'base.html' %}
 {% load i18n %}
 
-{% block extra_style %}
-    <style>
-        .nav.rates li{
-            margin: 10px 10px;
-            font-size:1em;
-        }
-        #dp .dropdown-toggle {
-            margin-left: -30px;
-            z-index: 9;
-            position: relative;
-            margin-top: 2px;
-            margin-right: 2px;
-        }
-    </style>
-{% endblock %}
 
 {% block home_active %}active{% endblock %}
 
 {% block content %}
     <h1 class="page-header">
-        Buy bitcoins at fixed price.
+        Fix future bitcoin exchange rate.<br>
+        <small>1$ = {{ rate }}BTC</small>
     </h1>
-    <form class="form-horizontal well" action="#" method="post">
-        {% csrf_token %}
-            <!--legend>Controls Bootstrap supports</legend-->
-            <div class="control-group">
-                <label class="control-label">Rate</label>
-                <span>{{ rate }}{{ roundedRate }}</span>
-            </div>
 
-            <div class="control-group info">
-                <label class="control-label" for="date">Date of purchase</label>
-                <div class="controls">
-                    {{ form.date.errors }}
-                    <div class="input-append date" id="dp" data-date="2014-06-10" data-date-format="yyyy-mm-dd">
-                        <input class="span2" size="180" type="text" name="date" id="id_date" value="2014-06-10" readonly>
-                        <span class="add-on"><i class="icon-calendar"></i></span>
-                    </div>
-                    <script>
-                        $(function(){
-                            $('#dp').datepicker();
-                        });
+    <form class="form-horizontal well" action="http://vast-falls-2365.herokuapp.com/#" method="post">
+        <input type="hidden" name="csrfmiddlewaretoken" value="V0oS3jCmb03RcY72QUNbZZHKgXvEsWmr">
+        <!--legend>Controls Bootstrap supports</legend-->
+        <div class="control-group info">
+            <label class="control-label" for="date">Future date when you need bitcoins</label>
+            <div class="controls">
+                {{ form.date.errors }}
+                <div class="input-append date" id="dp" data-date="2013-06-10" data-date-format="yyyy-mm-dd">
+                    <input class="span2" size="180" type="text" name="date" id="id_date" value="2013-06-10" readonly="">
+                    <span class="add-on"><i class="icon-calendar"></i></span>
+                </div>
+                <script>
+                    $(function(){
+                        $('#dp').datepicker();
+                    });
 
-                    </script>
-                </div>
+                </script>
             </div>
-            <div class="control-group info">
-                <label class="control-label" for="amount">Amount</label>
-                <div class="controls">
-                    <input type="text" size="120" name="amount" id="id_amount" value="1">
-                    <span class="help-inline">BTC</span>
-                </div>
+        </div>
+        <div class="control-group info">
+            <label class="control-label" for="amount">Amount of bitcoins you need</label>
+            <div class="controls">
                 {{ form.amount.errors }}
+                <input type="text" size="120" name="amount" id="id_amount" value="10">
+                <span class="help-inline">BTC</span>
             </div>
-            <div class="control-group">
-                <label class="control-label">Premium</label>
-                <span class="muted">29$</span>
-            </div>
-            <div class="form-actions">
-                <button type="submit" class="btn btn-primary">Continue</button>
-                <button type="reset" class="btn">Cancel</button>
-            </div>
+        </div>
+
+        <br><br>
+
+        <div class="control-group">
+            <label class="control-label">Fee payable now</label>
+            <span class="muted">&nbsp;&nbsp;<b>$10</b></span>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">Payment due before 18:00 2013-06-10</label>
+            <span class="muted">&nbsp;&nbsp;<b>$1,350</b></span>
+        </div>
+
+
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Continue</button>
+            <button type="reset" class="btn">Cancel</button>
+        </div>
     </form>
+
 
 {% endblock content %}
