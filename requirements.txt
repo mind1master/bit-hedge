@@ -7,6 +7,6 @@ wsgiref
 sorl-thumbnail
 PIL
 django-annoying
-psycopg2
-gunicorn 
-dj-database-url
+psycopg2==2.4.6
+dj-database-url==0.2.1
+gunicorn==0.17.2

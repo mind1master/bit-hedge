@@ -1,24 +1,6 @@
 import sys
 from utils import proj
 
-
-DEBUG = True
-TEMPLATE_DEBUG = DEBUG
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'bit_hedge',
-        'USER': 'postgres',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '5432',
-        }
-}
-
-if 'test' in sys.argv:
-    DATABASES['default']['NAME'] = ':memory:'
-
 SITE_ID = 1
 
 TIME_ZONE = 'America/Chicago'
