@@ -13,6 +13,7 @@ class Contract(models.Model):
     source_currency = models.CharField(choices=CURRENCY_CHOICES, default='USD', max_length=50)
     target_currency = models.CharField(choices=CURRENCY_CHOICES, default='BTC', max_length=50)
     rate = models.DecimalField(decimal_places=8, max_digits=12)
+    trade_amount = models.DecimalField(decimal_places=8, max_digits=12)
     creation_date = models.DateTimeField(auto_now_add=True)
     closing_date = models.DateTimeField(null=True, blank=True)
     premium_received = models.DateTimeField(null=True, blank=True)
