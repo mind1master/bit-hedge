@@ -10,6 +10,8 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^$', home_view, name='home_page'),
+    url(r'^first_step/$', first_step_view, name='first_step_page'),
+    url(r'^second_step/$', second_step_view, name='second_step_page'),
     url(r'^admin/', include(admin.site.urls)),
 )
 

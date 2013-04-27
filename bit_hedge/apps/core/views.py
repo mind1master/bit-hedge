@@ -3,7 +3,7 @@
 from annoying.decorators import render_to
 
 from django.contrib.auth.models import User
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
 
 from bit_hedge.apps.core.forms import *
 
@@ -18,11 +18,19 @@ def home_view(request):
 
 @render_to('core/first_step.html')
 def first_step_view(request):
-    form = None
     if request.user.is_authenticated() and not request.user.is_anonymous():
-        form = RegisterForm()
-    else:
         form = BitcoinRecipient()
+        user = request.user
+    else:
+        form = RegisterForm()
+        user = None
     return {
-        'from': form,
-        }
+        'form': form,
+        'user': user,
+    }
+
+@render_to('core/second_step.html')
+def second_step_view(request):
+    if request.method != 'POST':
+        return redirect('home_view')
+    return {}
