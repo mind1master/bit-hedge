@@ -38,3 +38,7 @@ nosetests.xml
 env/*
 
 local.py
+settins
+wsgi.py
+mydatabase
+requirements.txt

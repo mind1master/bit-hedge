@@ -12,6 +12,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     url(r'^$', home_view, name='home'),
     url(r'^pay_fee_view/$', pay_fee_view, name='pay_fee'),
+    url(r'^pay_fee_view_confirmed/$', pay_fee_view_confirmed, name='pay_fee_confirmed'),
     url(r'^register/$', register_view, name='register'),
     (r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'core/login.html'}),
     (r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}),

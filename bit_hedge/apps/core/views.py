@@ -49,6 +49,10 @@ def home_view(request):
 @render_to('core/pay_fee_view.html')
 def pay_fee_view(request):
     return {}
+	
+@render_to('core/pay_fee_view_confirmed.html')
+def pay_fee_view_confirmed(request):
+    return {}
 
 @render_to('core/register.html')
 def register_view(request):

@@ -6,7 +6,45 @@
 {% block content %}
     <fieldset>
     <h5>
-        Deal is almost done, you only need to pay 50$ of premium now.
+       Purache Confirmation!
     </h5>
+<table class="table table-bordered table-striped table-hover">
+    <tbody>
+      <tr>
+        <td>Date of purache</td>
+        <td>12-00-0000</td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr>
+        <td>Amount of bitcoins to purache</td>
+        <td>132</td>
+       </tr>
+      <tr>
+        <th>Fee payable now</th>
+        <td>15 USD</td>
+      </tr>
+    </tbody>
+  </table>	
+<small>Orders will be activated after payment confirmation.	</small>
+<br>
+<br>	
+	<form method="post" action="https://zed.ee/ecom/iPayServlet/" >
+		<input type="hidden" name="action" value="gaf">
+		<input type="hidden" name="ver" value="002">
+		<input type="hidden" name="id" value="">
+		<input type="hidden" name="ecuno" value="1120567">
+		<input type="hidden" name="eamount" value="50">
+		<input type="hidden" name="cur" value="EUR">
+		<input type="hidden" name="datetime" value="20130427180146">
+		<input type="hidden" name="mac" value="">
+		<input type="hidden" name="lang" value="en">	
+		<input type="image" value="PKK" src="/media/static/images/mc_vs_accpt_h_038_gif.gif" style="vertical-align:middle;width:88px" alt="Mastercard/Visa">&nbsp;
+				<input type="submit" class="btn btn-primary" value="Make Payment" style="margin-left: 65px;">
+		<img src="/media/static/images/mcsecure_vbv.gif" style="vertical-align:middle;float: right;margin-top: 2em;" alt="MasterCard SecureCode &amp; Verified by VISA">
+	</form>
+	<div style="clear:both"></div>
+
+	
     </fieldset>
 {% endblock content %}
