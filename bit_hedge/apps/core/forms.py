@@ -10,7 +10,7 @@ class HomeForm(forms.Form):
         '%m/%d/%y',
         '%d.%m.%y',
     ])
-    amount = forms.DecimalField()
+    amount = forms.FloatField()
 
 
 class BitcoinRecipient(forms.Form):

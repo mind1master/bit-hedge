@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import json
 
 from annoying.decorators import render_to
 from datetime import timedelta, datetime
@@ -6,7 +7,9 @@ from django.contrib.auth.forms import UserCreationForm
 
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
+from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect
+from django.views.decorators.csrf import csrf_exempt
 
 from bit_hedge.apps.core.forms import *
 from bit_hedge.apps.core.models import *
@@ -33,7 +36,7 @@ def home_view(request):
             return redirect(reverse('register'))
     #default value
     trgAmount = 2.78
-    srcAmount = trgAmount * rate
+    srcAmount = round(trgAmount * rate, 2)
     date = datetime.now()
 
     return {
@@ -60,8 +63,16 @@ def register_view(request):
         'form': form,
     }
 
-def premium(amount, rate, date) :
-    fee = getPremium(rate, date, amount)
-    return {
-        fee: fee
-    }
+@csrf_exempt
+def premium(request):
+    form = HomeForm(request.POST)
+    if form.is_valid():
+        trade_amount=form.cleaned_data['amount']
+        closing_date=form.cleaned_data['date']
+        rate = getRate()
+        srcAmount = round(trade_amount * rate, 2)
+        fee = getPremium(rate, closing_date, srcAmount)
+
+        json_data = json.dumps({'fee': fee, 'srcAmount': srcAmount, 'rate': rate})
+        # json data is just a JSON string now.
+        return HttpResponse(json_data, mimetype="application/json")

@@ -11,6 +11,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^$', home_view, name='home'),
+    url(r'^premium/$', premium, name='premium'),
     url(r'^pay_fee_view/$', pay_fee_view, name='pay_fee'),
     url(r'^register/$', register_view, name='register'),
     (r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'core/login.html'}),
