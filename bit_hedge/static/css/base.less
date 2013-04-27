@@ -1,3 +1,34 @@
+@font-face {
+  font-family: Klavika;
+  src: url("/media/static/css/Klavika-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: Klavika;
+  font-weight: bold;
+  src: url("/media/static/css/KlavikaBoldBold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: Klavika;
+  font-weight: bold;
+  font-style: italic;
+  src: url("/media/static/css/KlavikaBoldBoldItalic.otf") format("opentype");
+}
+
+@font-face {
+  font-family: Klavika;
+  font-style: italic;
+  src: url("/media/static/css/KlavikaMediumItalic.otf") format("opentype");
+}
+
+body {
+  background-image: url('/media/static/images/background.png');
+  background-repeat:no-repeat;
+  background-size:cover;
+  font-family: Klavika;
+}
+
 .nav-text {
   margin: 10px 10px;
   font-size:1em;
@@ -16,4 +47,71 @@
   h4 {
     padding-left: 20px;
   }
+}
+
+.header_top_cover {
+  background-color: #2a9cc1;
+  height: 0.5em;
+}
+
+.top-navigation {
+  padding-right: 1em;
+  padding-top: 0.2em;
+}
+
+ul.inline {
+  list-style: none;
+   li {
+     display: inline;
+   }
+  li + li:before{
+    content: " | ";
+    padding: 0 10px;
+  }
+}
+
+.page-header-main {
+  font-size: 5.5em;
+  font-style: italic;
+  text-align: center;
+  font-weight: normal;
+  margin-top: 15%;
+
+  .small {
+    font-weight: bold;
+    font-style: normal;
+    font-size: 0.5em;
+    margin-top: 0.5em;
+    height: 1em;
+  }
+
+  div {
+    display: inline-block;
+    height: 0.5em;
+    //margin: 5px;
+  }
+}
+
+.blue {
+  color: #2a9cc1;
+}
+
+.description {
+  width: 50%;
+  left: 25%;
+  position: relative;
+  margin-bottom: 2em;
+}
+
+.bold-italic {
+  font-weight: bold;
+  font-style: italic;
+}
+
+.form-label {
+  font-size: 1.2em;
+}
+
+.form-control {
+  margin: 20px;
 }

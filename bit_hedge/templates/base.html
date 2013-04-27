@@ -39,32 +39,26 @@
 
 </head>
 
-<body><div class="container-fluid">
+<body>
 
 {% block header_wrapper %}
-    <div class="navbar">
-        <div class="navbar-inner">
-            <a class="brand" href="#">Bit-Hedge</a>
-
-            <div class="nav-collapse">
-                <ul class="nav pull-right">
-                    {% if user.is_authenticated %}
-                        <li class="nav-text">Hello, <b>{{ user.username }}</b></li>
-                        <li><a href="/logout">Logout</a></li>
-                    {% else %}
-                        <li><a href="/login">Login</a></li>
-                        <li><a href="{% url 'register' %}">Register</a></li>
-                    {% endif %}
-                </ul>
-            </div>
-            <!-- /.nav-collapse -->
-        </div>
-        <!-- /navbar-inner -->
+    <div class="header_top_cover">
+    </div>
+    <div class="top-navigation pull-right">
+        <ul class="inline">
+            {% if user.is_authenticated %}
+                <li>Hello, <b>{{ user.username }}</b></li>
+                <li><a href="/logout">Logout</a></li>
+            {% else %}
+                <li><a href="/login">Login</a></li>
+                <li><a href="{% url 'register' %}">Register</a></li>
+            {% endif %}
+        </ul>
     </div>
 {% endblock header_wrapper %}
 
 {% block content_wrapper %}
-  <div class="row-fluid"><div class="offset4 span4"><article>
+  <div class="row-fluid"><div class="offset2 span8"><article>
     {% block content %}{% endblock content %}
   </article></div></div>
 {% endblock content_wrapper %}
@@ -75,5 +69,5 @@
     </footer></div></div>
 {% endblock footer_wrapper %}
 
-</div></body>
+</body>
 </html>
