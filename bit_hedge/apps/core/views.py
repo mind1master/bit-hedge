@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 
 from annoying.decorators import render_to
+from django.contrib.auth.forms import UserCreationForm
 
 from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404, redirect
 
 from bit_hedge.apps.core.forms import *
@@ -34,3 +36,13 @@ def second_step_view(request):
     if request.method != 'POST':
         return redirect('home_view')
     return {}
+
+@render_to('core/register.html')
+def register_view(request):
+    form = UserCreationForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect(reverse('home_page'))
+    return {
+        'form': form,
+    }

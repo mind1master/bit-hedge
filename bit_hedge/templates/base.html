@@ -41,6 +41,20 @@
 <body><div class="container-fluid">
 
 {% block header_wrapper %}
+    <div class="navbar">
+        <div class="navbar-inner">
+            <a class="brand" href="/">Bit hedge</a>
+            <ul class="nav">
+                {% if user.is_authenticated %}
+                    <li>Hello, <b>{{ user.username }}</b></li>
+                    <li><a href="/logout">Logout</a></li>
+                {% else %}
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="{% url 'register_page' %}">Register</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
 {% endblock header_wrapper %}
 
 {% block content_wrapper %}
