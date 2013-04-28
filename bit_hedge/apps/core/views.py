@@ -57,6 +57,11 @@ def pay_fee_view(request):
 def pay_fee_view_confirmed(request):
     return {}
 
+@render_to('core/presentation.html')
+def presentation(request):
+    return {}
+
+
 @render_to('core/register.html')
 def register_view(request):
     form = UserCreationForm(request.POST or None)
