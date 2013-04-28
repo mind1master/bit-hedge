@@ -62,7 +62,7 @@ def register_view(request):
     form = UserCreationForm(request.POST or None)
     if form.is_valid():
         form.save()
-        return redirect(reverse('home_page'))
+        return redirect(reverse('home'))
     return {
         'form': form,
     }
