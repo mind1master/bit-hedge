@@ -11,6 +11,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^$', home_view, name='home'),
+    url(r'^premium/$', premium, name='premium'),
     url(r'^pay_fee_view/$', pay_fee_view, name='pay_fee'),
     url(r'^pay_fee_view_confirmed/$', pay_fee_view_confirmed, name='pay_fee_confirmed'),
     url(r'^register/$', register_view, name='register'),

@@ -25,4 +25,4 @@ def getRate(two_digits=False):
 
 def getPremium(rate, date, amount) :
     #TODO
-    return amount * 0.035
+    return round(amount * 0.035, 2)
