@@ -3,6 +3,7 @@
 
 # USD to BTC
 import json
+from math import sqrt
 import urllib2
 
 
@@ -24,5 +25,7 @@ def getRate(two_digits=False):
     return btcToUsdRate
 
 def getPremium(rate, date, amount) :
-    #TODO
-    return round(amount * 0.035, 2)
+    # Fee = [E(St) - So] + A * sigma * sqrt(N)+ profit
+
+    fee = amount * 0.1 * 0.2 * (sqrt(2)) + 1
+    return round(fee, 2)

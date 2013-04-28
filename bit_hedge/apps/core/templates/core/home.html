@@ -1,10 +1,26 @@
 {% extends 'base.html' %}
 {% load i18n %}
 
-
 {% block home_active %}active{% endblock %}
 
 {% block content %}
+    <style>
+        body, label, input, button, select, textarea { line-height:initial; }
+        .description { left:0; width:400px; margin:0 auto; }
+        .page-header-main { font-size:4.4em; line-height:1em; }
+        .page-header-main .small { margin:0 0 1em 0; vertical-align:top; }
+        .row-fluid .offset2:first-child { width:572px; margin:0 auto; float:none; }
+        .row-fluid .offset1:first-child { width:100%; margin:20px 0 0; }
+        .well { border:none; background:none; }
+        .row-fluid .offset1 .span5 { margin:0; }
+        .form-control { margin:0; }
+        .row-fluid .offset1.span5 { width:50%; }
+        .form-actions { float:right; padding-top:0; background:none; border:none; }
+        .info:first-child { width:50%; }
+        .info { width:49%; display:inline-block; }
+        .info div { font-size:3em; }
+        .info label { color:#1b1b1b; font-size:16px; }
+    </style>
     <div class="page-header-main">
         <div class="blue">Fix future bitcoin rate</div>
         <div class="small">1 BTC = $<span id="rate">{{ rate }}</span></div>
@@ -17,7 +33,7 @@
 
     <div class="row-fluid">
     <div class="offset1 span10">
-    <form class="well form-inline blue" id="contractForm" action="#" method="post">
+    <form class="well form-inline blue" id="contractForm" action="{% url 'home' %}" method="POST">
         {% csrf_token %}
         <input type="hidden" name="csrfmiddlewaretoken" value="V0oS3jCmb03RcY72QUNbZZHKgXvEsWmr">
         <!--legend>Controls Bootstrap supports</legend-->
@@ -58,14 +74,14 @@
         <div class="clearfix"></div>
         <hr>
 
-        <div class="control-group">
+        <div class="info">
             <label class="control-label" for="premium">Fee payable now</label>
 
             <div class="controls" id="fee">${{ fee }}</div>
         </div>
 
-        <div class="control-group">
-            <label class="control-label">Payment due before 18:00 {{ date }}</label>
+        <div class="info">
+            <label class="control-label">Payment due before 18:00 {{ date }} UTC</label>
 
             <div class="controls" id="src_amount">${{ srcAmount }}</div>
         </div>
