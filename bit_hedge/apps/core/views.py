@@ -15,6 +15,7 @@ from bit_hedge.apps.core.forms import *
 from bit_hedge.apps.core.models import *
 from bit_hedge.apps.core.utils import getRate, getPremium
 
+NUMER_FORMAT = "{:.2f}"
 
 @render_to('core/home.html')
 def home_view(request):
@@ -38,13 +39,14 @@ def home_view(request):
     trgAmount = 2.78
     srcAmount = round(trgAmount * rate, 2)
     date = datetime.now().date() + timedelta(days=2)
+    fee = getPremium(rate, date, srcAmount)
 
     return {
-        'srcAmount': srcAmount,
-        'trgAmount': trgAmount,
-        'rate': rate,
+        'srcAmount': NUMER_FORMAT.format(srcAmount),
+        'trgAmount': NUMER_FORMAT.format(trgAmount),
+        'rate': NUMER_FORMAT.format(rate),
         'date': date.strftime('%Y-%m-%d'),
-        'fee': getPremium(rate, date, srcAmount),
+        'fee': NUMER_FORMAT.format(fee),
         'form': form
     }
 
@@ -82,6 +84,6 @@ def premium(request):
         srcAmount = round(trade_amount * rate, 2)
         fee = getPremium(rate, closing_date, srcAmount)
 
-        json_data = json.dumps({'fee': fee, 'srcAmount': srcAmount, 'rate': rate})
+        json_data = json.dumps({'fee': NUMER_FORMAT.format(fee), 'srcAmount': NUMER_FORMAT.format(srcAmount), 'rate': NUMER_FORMAT.format(rate)})
         # json data is just a JSON string now.
         return HttpResponse(json_data, mimetype="application/json")
