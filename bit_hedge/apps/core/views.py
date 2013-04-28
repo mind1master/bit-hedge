@@ -37,13 +37,13 @@ def home_view(request):
     #default value
     trgAmount = 2.78
     srcAmount = round(trgAmount * rate, 2)
-    date = datetime.now()
+    date = datetime.now().date() + timedelta(days=2)
 
     return {
         'srcAmount': srcAmount,
         'trgAmount': trgAmount,
         'rate': rate,
-        'date': date,
+        'date': date.strftime('%Y-%m-%d'),
         'fee': getPremium(rate, date, srcAmount),
         'form': form
     }

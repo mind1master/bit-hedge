@@ -43,7 +43,7 @@ body, label, input, button, select, textarea { line-height:initial; }
 
                     <div class="controls">
                         <div class="input-append date" id="dp" data-date="{{ date }}" data-date-format="yyyy-mm-dd">
-                            <input type="text" class="input-medium" name="date" id="id_date" value="2013-06-10">
+                            <input type="text" class="input-medium" name="date" id="id_date" value="{{ date }}">
                             <span class="add-on"><i class="icon-calendar"></i></span>
                         </div>
                         <script>
@@ -80,7 +80,7 @@ body, label, input, button, select, textarea { line-height:initial; }
         </div>
 
         <div class="info">
-            <label class="control-label">Payment due before 18:00 {{ date }} UTC</label>
+            <label class="control-label">Payment due before 18:00 <span id='info_date'>{{ date }}</span> UTC</label>
 
             <div class="controls" id="src_amount">${{ srcAmount }}</div>
         </div>
@@ -97,6 +97,8 @@ body, label, input, button, select, textarea { line-height:initial; }
     function refreshValues() {
         var form = $('#contractForm');
 
+        $("#info_date").text($('#id_date').val());
+
         $.ajax({
             url: "/premium/",
             type: "POST",
@@ -112,8 +114,7 @@ body, label, input, button, select, textarea { line-height:initial; }
         });
     }
 
-
-    $('#dp, #id_amount').on('input', function(){
+    $('#id_amount, #id_date').on('input', function() {
         refreshValues()
      });
 

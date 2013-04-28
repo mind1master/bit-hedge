@@ -5,6 +5,7 @@
 import json
 from math import sqrt
 import urllib2
+from datetime import timedelta, datetime, date
 
 
 def getRate(two_digits=False):
@@ -24,8 +25,18 @@ def getRate(two_digits=False):
         btcToUsdRate = round(btcToUsdRate, 2)
     return btcToUsdRate
 
-def getPremium(rate, date, amount) :
+def getPremium(rate, d, amount) :
     # Fee = [E(St) - So] + A * sigma * sqrt(N)+ profit
+    # E(St) - predicted amount at "date"
+    # So - current amount
+    # A - amont * percent(10 %)
+    # sigma - predicted spread (hardcoded as 20 %)
+    # N - date - now
+    # profit - 1$
 
-    fee = amount * 0.1 * 0.2 * (sqrt(2)) + 1
+    now = date.today()
+    n = (d - now).days
+    if (n <= 0): n = 1
+
+    fee = amount * 0.1 * 0.2 * (sqrt(n)) + 1
     return round(fee, 2)
